@@ -1,0 +1,87 @@
+<p>MacOS上でJIRAからボタンでストーリ作成　　issue 作成したので、<br>
+ちょこちょこ詰まったとこを中心にメモります。</p>
+
+<h2>
+<span id="実現すること" class="fragment"></span><a href="#%E5%AE%9F%E7%8F%BE%E3%81%99%E3%82%8B%E3%81%93%E3%81%A8"><i class="fa fa-link"></i></a>実現すること</h2>
+
+<ul>
+<li>Mac上でJIRAより、issue=ストーリ作成ができること　ConfuluenceからJIRA課題を起票する。</li>
+</ul>
+
+<h2>
+<span id="動作環境について" class="fragment"></span><a href="#%E5%8B%95%E4%BD%9C%E7%92%B0%E5%A2%83%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"><i class="fa fa-link"></i></a>動作環境について</h2>
+
+<ul>
+<li>macOS Mojave </li>
+<li>FireFox　　Chromeだとできないおそらく社内設定のため</li>
+</ul>
+
+<p>１．さっそくJIRAConfuluenceより作成ボタンおす。<br>
+２．｛｝と入力しその間に以下を入力。<br>
+３．お終い。</p>
+
+<p>テスト方法<br>
+ボタンを押す。反応しない場合は、htmlがおかしいため削除しつつ最低限の実装しつつたしかめながら行う。</p>
+
+<div class="code-frame" data-lang="terminal">
+<div class="code-lang"><span class="bold">JIRA</span></div>
+<div class="highlight"><pre><span class="go">
+</span><span class="gp">&lt;div style="margin-top:1.0rem;</span><span class="w"> </span>margin-bottom:2.0rem<span class="p">;</span><span class="s2">"&gt;
+</span><span class="go">  &lt;a id="create-jira" class="create-jira external-link"
+</span><span class="gp">      style="margin:0;</span><span class="s2">" href="</span><span class="c">#" rel="nofollow" target="_blank"&gt;</span>
+<span class="go">    &lt;button id="request-btn-group"
+</span><span class="gp">        class="aui-button aui-button-primary"&gt;</span>ストーリ作成ボタン！&lt;/button&gt;&lt;/a&gt;
+<span class="gp">&lt;/div&gt;</span><span class="w">
+</span><span class="gp">&lt;script type="text/javascript"&gt;</span><span class="w">
+</span><span class="go">(function() {
+  // url
+</span><span class="gp">  // [準備] &gt;</span><span class="w"> </span><span class="o">[</span>URL] の手順で取得した URL を設定します。
+<span class="gp">  var baseUrl = 'http://XXXXXXXXXX/CreateIssueDetails!init.jspa';</span><span class="w">
+</span><span class="go">
+  // project・・変数を自分で確認し設定すること仮XXXX
+</span><span class="gp">  var project = '?pid=XXXX';</span><span class="w">
+</span><span class="go">
+  // issue・・変数を自分で確認し設定すること仮XXXX
+</span><span class="gp">  var issue = '&amp;issuetype=XXXX';</span><span class="w">
+</span><span class="go">
+  // priority
+</span><span class="gp">  var priority = '&amp;priority=3';</span><span class="w">
+</span><span class="go">
+  // duedate
+  // この例では起票日から7日後をデフォルトの期限としています。
+</span><span class="gp">   //  var duedate = '&amp;duedate=';</span><span class="w">
+</span><span class="gp">    // var dt = new Date();</span><span class="w">
+</span><span class="gp">    // dt.setDate(dt.getDate() + 7);</span><span class="w">
+</span><span class="gp">    // duedate += (dt.getFullYear() + '/' + (dt.getMonth() + 1) + '/' + dt.getDate());</span><span class="w">
+</span><span class="go">
+  // desc
+  // 改行コードも encodeURIComponent で囲えばデフォルト値に含めることができます。★★★
+</span><span class="gp">  //var desc = '&amp;description=' +'メモ' + encodeURIComponent('T/O') ;</span><span class="w">
+</span><span class="gp">//  var desc = '&amp;description=' + encodeURIComponent('改行の文字コードは\nです');</span><span class="w">
+</span><span class="go">
+</span><span class="gp">var desc = '&amp;description=' + encodeURIComponent('＜ユーザストーリ＞ \n【その仕事のユーザー】として、\n【そのタスクの内容】したい\n なぜなら、【そのタスクをする理由】からだ\n');</span><span class="w">
+</span><span class="go">
+  // summary
+  // 要約はわざと空にしてあります。
+  // 要約を空にしておくことで、課題作成時に入力不足エラーが発生し、
+  // すでに入力された他の値をテンプレートとして利用できます。
+</span><span class="gp">  var summary = '&amp;summary=';</span><span class="w">
+</span><span class="go">
+  // assignee
+  // デフォルトの担当者を設定したい場合は、encodeURIComponent でユーザーIDを囲って指定。
+</span><span class="gp">  var assignee = '&amp;assignee='+encodeURIComponent('admin');</span><span class="p">;</span>
+<span class="go">
+  // reporter
+  // Confluence を使用していて、ユーザーが JIRA と一元管理されている場合のみ使用可能。
+</span><span class="gp">  var username = $</span><span class="o">(</span><span class="s1">'#user-menu-link'</span><span class="o">)</span>.data<span class="o">(</span><span class="s1">'username'</span><span class="o">)</span><span class="p">;</span>
+<span class="gp">  var reporter = '&amp;reporter=' + encodeURIComponent(username);</span><span class="w">
+</span><span class="go">
+  // link
+</span><span class="gp">  $</span><span class="o">(</span><span class="s1">'.create-jira'</span><span class="o">)</span>.attr<span class="o">(</span><span class="s1">'href'</span>, baseUrl + project + issue + priority + summary + assignee + reporter + desc<span class="o">)</span><span class="p">;</span>
+<span class="gp">})();</span><span class="w">
+</span><span class="gp">&lt;/script&gt;</span><span class="w">
+</span></pre></div>
+</div>
+
+<h3>
+<span id="以上執筆３０分" class="fragment"></span><a href="#%E4%BB%A5%E4%B8%8A%E5%9F%B7%E7%AD%86%EF%BC%93%EF%BC%90%E5%88%86"><i class="fa fa-link"></i></a>以上（執筆３０分）</h3>

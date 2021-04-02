@@ -1,0 +1,55 @@
+<p>MacOS M1 Github構築で、<br>
+ちょこちょこ詰まったとこを中心にメモります。</p>
+
+<h2>
+<span id="実現すること" class="fragment"></span><a href="#%E5%AE%9F%E7%8F%BE%E3%81%99%E3%82%8B%E3%81%93%E3%81%A8"><i class="fa fa-link"></i></a>実現すること</h2>
+
+<ul>
+<li>Mac　Visualstudioでレポジトリ作成しソースコミットできること。</li>
+</ul>
+
+<h2>
+<span id="動作環境について" class="fragment"></span><a href="#%E5%8B%95%E4%BD%9C%E7%92%B0%E5%A2%83%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"><i class="fa fa-link"></i></a>動作環境について</h2>
+
+<ul>
+<li>macOS Big Sur </li>
+<li>Visualstudio for Mac</li>
+</ul>
+
+<p>１．先人のちからで、実施する。<br>
+　初心者がGithubをはじめてみる【Mac】 (´･ω･`)<br>
+　<a href="https://qiita.com/Shobon/items/8c6cda5a2bcbf2525c6e" class="autolink" id="reference-7675b2333e8a3d56201f">https://qiita.com/Shobon/items/8c6cda5a2bcbf2525c6e</a><br>
+２．エラーが出たためメールと、usernameを入力。<br>
+３．お終い。</p>
+
+<div class="code-frame" data-lang="terminal">
+<div class="code-lang"><span class="bold">terminal</span></div>
+<div class="highlight"><pre><span class="go">git push origin master
+↓エラーメッセージ
+error: src refspec master does not match any
+error: failed to push some refs to 'https://github.com/hide6974/new.git'
+</span></pre></div>
+</div>
+
+<p>原因は途中コマンドで聞かれたメールとusernameを登録していないため</p>
+
+<div class="code-frame" data-lang="terminal">
+<div class="code-lang"><span class="bold">terminal</span></div>
+<div class="highlight"><pre><span class="go">git commit -m "first" 
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+</span></pre></div>
+</div>
+
+<p>解消。</p>
+
+<h3>
+<span id="以上執筆15分" class="fragment"></span><a href="#%E4%BB%A5%E4%B8%8A%E5%9F%B7%E7%AD%8615%E5%88%86"><i class="fa fa-link"></i></a>以上（執筆15分）</h3>
