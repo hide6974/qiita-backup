@@ -61,3 +61,8 @@ https://note.com/jpn_atsushi/n/nf783864bf165
 ・話し合う。衝突した場合は、自分の意見を押し通すのではなく徹底的に話し合いを行い合意する。全員とする必要はなし
 
 
+## Donation
+If you want to support my developments you are welcome to buy me a cup of coffee :)
+
+BTC:14kGuL9EnXMrhSiJ3cp4Wsrp6MhAAK6eDQ
+BAT:
