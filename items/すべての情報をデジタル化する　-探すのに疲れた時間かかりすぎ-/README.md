@@ -6,6 +6,12 @@
 
 
 Google
+<iframe width="560" height="315" src="https://www.youtube.com/embed/bE31y5HbukA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+Microsoft Office 365
+<iframe width="560" height="315" src="https://www.youtube.com/embed/nKU-FMzZFF0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+以下メモ
 <iframe width="560" height="615" frameborder=’0′  src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTrttdjysprINwRVzPL1rVfTXlCcDvGHgzm8Tolv3vfv_JOAp0c3Ycy_ItfkjA88tEwKe_5dbiaI1iU/pubhtml?widget=true&amp;headers=false"></iframe>
 
 
