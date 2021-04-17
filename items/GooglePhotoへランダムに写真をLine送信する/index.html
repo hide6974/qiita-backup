@@ -4,7 +4,8 @@
 
 <ul>
 <li>GooglePhotoの写真を取得し、Lineへ送信する。週に1回送信をする</li>
-<li>フォトフレームに送信する</li>
+<li>フォトフレームに送信するなどできます。</li>
+<li>3日間ほどかかった。。。世界中の先人たちに感謝</li>
 </ul>
 
 <h2>
@@ -17,17 +18,17 @@ Line</p>
 <span id="初期ロードマップ" class="fragment"></span><a href="#%E5%88%9D%E6%9C%9F%E3%83%AD%E3%83%BC%E3%83%89%E3%83%9E%E3%83%83%E3%83%97"><i class="fa fa-link"></i></a>初期ロードマップ</h2>
 
 <ul>
-<li>1　アルバム名を取得
+<li>
+<p>1　アルバム名を取得</p>
 
 <ul>
 <li>1-1　googlePhotoで取得したアルバム名をgooglespreadsheetのセルへ一覧で書き出す</li>
+<li>1-2　共有アルバムのIDを取得し、googlespreadsheetのセルへ一覧で書き出す </li>
 </ul>
-
-<h2>
-<span id="--1-2共有アルバムのidを取得しgooglespreadsheetのセルへ一覧で書き出す" class="fragment"></span><a href="#--1-2%E5%85%B1%E6%9C%89%E3%82%A2%E3%83%AB%E3%83%90%E3%83%A0%E3%81%AEid%E3%82%92%E5%8F%96%E5%BE%97%E3%81%97googlespreadsheet%E3%81%AE%E3%82%BB%E3%83%AB%E3%81%B8%E4%B8%80%E8%A6%A7%E3%81%A7%E6%9B%B8%E3%81%8D%E5%87%BA%E3%81%99"><i class="fa fa-link"></i></a>- 1-2　共有アルバムのIDを取得し、googlespreadsheetのセルへ一覧で書き出す</h2>
 </li>
-<li>３　画像をURLで保持</li>
-<li>4　Lineへ送信
+<li><p>３　画像をURLで保持</p></li>
+<li>
+<p>4　Lineへ送信</p>
 
 <ul>
 <li>4-1 sampleLine送信する(テキスト)</li>
@@ -36,5 +37,16 @@ Line</p>
 </ul>
 </li>
 </ul>
+
+<h2>
+<span id="ソースは以下のmain" class="fragment"></span><a href="#%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AF%E4%BB%A5%E4%B8%8B%E3%81%AEmain"><i class="fa fa-link"></i></a>ソースは以下のMain。</h2>
+
+<p><qiita-embed-ogp src="https://github.com/hide6974/GoogleGas/blob/main/main.gs"></qiita-embed-ogp></p>
+
+<p>コツはちいさくできることから少しづつやることでしたね。</p>
+
+<p>PropertiesService.getScriptProperties().getProperty　→最初はこの意味が不明。3時間後プロパティかと納得</p>
+
+<p>作成は、以下を利用。</p>
 
 <p><qiita-embed-ogp src="https://qiita.com/hiteto/items/f63584045df31dff31d2"></qiita-embed-ogp></p>
