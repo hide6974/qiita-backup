@@ -1,0 +1,39 @@
+<p>tree mac エラー　homebrewからインストールしたいがエラーとなる<br>
+以下で解決した。</p>
+
+<div class="code-frame" data-lang="mac">
+<div class="code-lang"><span class="bold">terminal</span></div>
+<div class="highlight"><pre class="with-code"><code>tree mac
+
+zsh: command not found: tree
+hide@hidenoMacBook-Air demoapp_v1 % brew install tree
+Updating Homebrew...
+error: Not a valid ref: refs/remotes/origin/master
+fatal: ambiguous argument 'refs/remotes/origin/master': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git &lt;command&gt; [&lt;revision&gt;...] -- [&lt;file&gt;...]'
+
+</code></pre></div>
+</div>
+
+<p>not install</p>
+
+<div class="code-frame" data-lang="mac">
+<div class="code-lang"><span class="bold">terminal</span></div>
+<div class="highlight"><pre class="with-code"><code>tree mac
+
+hide@hidenoMacBook-Air ~ % brew install tree  
+Updating Homebrew...
+fatal: Could not resolve HEAD to a revision
+==&gt; Searching for similarly named formulae...
+Error: No similarly named formulae found.
+Error: No available formula or cask with the name "tree".
+==&gt; Searching for a previously deleted formula (in the last month)...
+Error: No previously deleted formula found.
+==&gt; Searching taps on GitHub...
+Error: No formulae found in taps.
+hide@hidenoMacBook-Air ~ % brew doctor
+</code></pre></div>
+</div>
+
+<p>解決はロゼッタモードのterminalでのインストールでOKだった</p>
