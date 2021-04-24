@@ -1,0 +1,54 @@
+<div class="code-frame" data-lang="mac">
+<div class="code-lang"><span class="bold">terminal</span></div>
+<div class="highlight"><pre class="with-code"><code>docker-compose build api 
+
+ =&gt; CACHED [5/9] WORKDIR /app                                                                                                     0.0s
+ =&gt; CACHED [6/9] COPY package*.json ./                                                                                            0.0s
+ =&gt; ERROR [7/9] RUN yarn install                                                                                                  1.0s
+------                                                                                                                                 
+ &gt; [7/9] RUN yarn install:
+#12 1.027 /bin/sh: yarn: not found
+------
+executor failed running [/bin/sh -c yarn install]: exit code: 127
+ERROR: Service 'api' failed to build
+</code></pre></div>
+</div>
+
+<p>yarn installするけどbin/sh配下にyarnが見つかりませんと。</p>
+
+<p>原因そもそものDockerfileが間違ってapiようではなく<br>
+front用であったため</p>
+
+<div class="code-frame" data-lang="docker">
+<div class="code-lang"><span class="bold">api&gt;Dockerfile</span></div>
+<div class="highlight"><pre class="with-code"><code><span class="k">FROM</span><span class="s"> ruby:2.7.1-alpine</span>
+
+<span class="k">ARG</span><span class="s"> WORKDIR</span>
+
+<span class="k">ENV</span><span class="s"> RUNTIME_PACKAGES="linux-headers libxml2-dev make gcc libc-dev nodejs tzdata postgresql-dev postgresql git" \</span>
+    DEV_PACKAGES="build-base curl-dev" \
+    HOME=/${WORKDIR} \
+    LANG=C.UTF-8 \
+    TZ=Asia/Tokyo
+
+<span class="c"># ENV test（このRUN命令は確認のためなので無くても良い）</span>
+<span class="k">RUN </span><span class="nb">echo</span> <span class="k">${</span><span class="nv">HOME</span><span class="k">}</span>
+
+<span class="k">WORKDIR</span><span class="s"> ${HOME}</span>
+
+<span class="k">COPY</span><span class="s"> Gemfile* ./</span>
+
+<span class="k">RUN </span>apk update <span class="o">&amp;&amp;</span> <span class="se">\
+</span>    apk upgrade <span class="o">&amp;&amp;</span> <span class="se">\
+</span>    apk add <span class="nt">--no-cache</span> <span class="k">${</span><span class="nv">RUNTIME_PACKAGES</span><span class="k">}</span> <span class="o">&amp;&amp;</span> <span class="se">\
+</span>    apk add <span class="nt">--virtual</span> build-dependencies <span class="nt">--no-cache</span> <span class="k">${</span><span class="nv">DEV_PACKAGES</span><span class="k">}</span> <span class="o">&amp;&amp;</span> <span class="se">\
+</span>    bundle <span class="nb">install</span> <span class="nt">-j4</span> <span class="o">&amp;&amp;</span> <span class="se">\
+</span>    apk del build-dependencies
+
+<span class="k">COPY</span><span class="s"> . .</span>
+
+<span class="k">CMD</span><span class="s"> ["rails", "server", "-b", "0.0.0.0"]</span>
+</code></pre></div>
+</div>
+
+<p>以上</p>

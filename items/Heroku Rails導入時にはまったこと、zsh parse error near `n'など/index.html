@@ -1,0 +1,21 @@
+<p>Heroku mac M1で設定中に</p>
+
+<div class="code-frame" data-lang="mac">
+<div class="code-lang"><span class="bold">terminal</span></div>
+<div class="highlight"><pre class="with-code"><code>heroku config:set RAILS_MASTER_KEY=&lt;master key&gt;
+
+zsh: parse error near `\n'
+
+</code></pre></div>
+</div>
+
+<p>↓解決 api/config/のmaster.keyをXXXXXXXX貼り付けること</p>
+
+<div class="code-frame" data-lang="mac">
+<div class="code-lang"><span class="bold">terminal</span></div>
+<div class="highlight"><pre class="with-code"><code>heroku config:set RAILS_MASTER_KEY=XXXXXXXX
+
+</code></pre></div>
+</div>
+
+<p>以上</p>

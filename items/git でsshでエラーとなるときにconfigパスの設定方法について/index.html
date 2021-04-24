@@ -1,0 +1,47 @@
+<div class="code-frame" data-lang="mac">
+<div class="code-lang"><span class="bold">terminal</span></div>
+<div class="highlight"><pre class="with-code"><code>ssh -T git@github.com
+
+git@github.com: Permission denied (publickey).
+</code></pre></div>
+</div>
+
+<p>ssh-add していないとのこと。</p>
+
+<div class="code-frame" data-lang="mac">
+<div class="code-lang"><span class="bold">terminal</span></div>
+<div class="highlight"><pre class="with-code"><code>ssh -T git@github.com
+
+git@github.com: Permission denied (publickey).
+</code></pre></div>
+</div>
+
+<p>鍵しても、ssh-addを忘れていると上記エラーが出ることがあります。<br>
+まずは「ssh-add -l」して状態を確認。<br>
+読み込んでほしい秘密鍵のパスがちゃんと出てこればOKです。<br>
+出てこなければ、ssh-addする。</p>
+
+<p>eval <code>ssh-agent</code><br>
+ssh-add ~/.ssh/id_rsa</p>
+
+<p>それでもだめなら</p>
+
+<div class="code-frame" data-lang="mac">
+<div class="code-lang"><span class="bold">terminal</span></div>
+<div class="highlight"><pre class="with-code"><code>cat config
+</code></pre></div>
+</div>
+
+<p>以下追加</p>
+
+<div class="code-frame" data-lang="mac">
+<div class="code-lang"><span class="bold">terminal</span></div>
+<div class="highlight"><pre class="with-code"><code>cat config
+Host github
+  HostName github.com
+  IdentityFile ~/.ssh/id_rsa_github #→ここの宛先を変更する
+  User git
+</code></pre></div>
+</div>
+
+<p>以上</p>
