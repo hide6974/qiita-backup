@@ -24,18 +24,18 @@
 
 <div class="code-frame" data-lang="terminal">
 <div class="code-lang"><span class="bold">terminal</span></div>
-<div class="highlight"><pre><span class="go">git push origin master
+<div class="highlight"><pre class="with-code"><code><span class="go">git push origin master
 ↓エラーメッセージ
 error: src refspec master does not match any
 error: failed to push some refs to 'https://github.com/hide6974/new.git'
-</span></pre></div>
+</span></code></pre></div>
 </div>
 
 <p>原因は途中コマンドで聞かれたメールとusernameを登録していないため</p>
 
 <div class="code-frame" data-lang="terminal">
 <div class="code-lang"><span class="bold">terminal</span></div>
-<div class="highlight"><pre><span class="go">git commit -m "first" 
+<div class="highlight"><pre class="with-code"><code><span class="go">git commit -m "first" 
 
 *** Please tell me who you are.
 
@@ -46,7 +46,7 @@ Run
 
 to set your account's default identity.
 Omit --global to set the identity only in this repository.
-</span></pre></div>
+</span></code></pre></div>
 </div>
 
 <p>解消。</p>

@@ -1,0 +1,22 @@
+<p>'v-slot' directive doesn't support any modifierとエラーが出たときの対処方法。</p>
+
+<p>[vue/valid-v-slot]<br>
+'v-slot' directive doesn't support any modifier.</p>
+
+<div class="code-frame" data-lang="vuejs">
+<div class="code-lang"><span class="bold">xxx.vue</span></div>
+<div class="highlight"><pre class="with-code"><code> With Eslint error
+
+<span class="nt">&lt;</span><span class="k">template</span> <span class="na">v-slot:item.name=</span><span class="s">"{ item }"</span><span class="nt">&gt;</span>
+</code></pre></div>
+</div>
+
+<div class="code-frame" data-lang="vuejs">
+<div class="code-lang"><span class="bold">xxx.vue</span></div>
+<div class="highlight"><pre class="with-code"><code>Without error:
+
+<span class="nt">&lt;</span><span class="k">template</span> <span class="na">v-slot:</span><span class="err">[`</span><span class="na">item.name</span><span class="err">`</span><span class="na">]=</span><span class="s">"{ item }"</span><span class="nt">&gt;</span>
+</code></pre></div>
+</div>
+
+<p>で解決</p>
